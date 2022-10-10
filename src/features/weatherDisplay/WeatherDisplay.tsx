@@ -1,26 +1,25 @@
-import { useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "@hooks/store-hook";
-import { receivedWeather } from "./weatherDisplaySlice";
-import { useGetWeatherByCoordsQuery } from "common/services/weatherSvc";
+import { useGetWeatherByCoordsQuery, useGetCityNameByCoordsQuery } from "common/services/weatherSvc";
+import GeolocationCoordinates from '@hooks/geolocation';
 
 const WeatherDisplay = () => {
-  const dispatch = useAppDispatch();
-  const { weather } = useAppSelector((state) => state.weather);
+  const coordinates = GeolocationCoordinates();
+  const latitude = coordinates?.coords?.latitude;
+  const longitude = coordinates?.coords?.longitude;
   const { isLoading, data } = useGetWeatherByCoordsQuery(null);
-  
-  useEffect(() => {
-    dispatch(receivedWeather(data));
-  }, [data, dispatch]);
 
-  if (isLoading) {
+  const { isLoading: isLoadingCity, data: dataCity } = useGetCityNameByCoordsQuery({
+    latitude,
+    longitude
+  }, { skip: !latitude && !longitude });
+  
+  if (isLoading || isLoadingCity || !dataCity) {
     return <>Weather is Loading!</>
   }
 
   return (
     <>
-      <div>From RTKQuery? {JSON.stringify(data, null, 2)}</div>
-      <p>Queries</p>
-      <div>FromSlice? {JSON.stringify(weather, null, 2)}</div>
+      {/* <div>From RTKQuery? {JSON.stringify(data, null, 2)}</div> */}
+      <div>City From RTKQuery? {JSON.stringify(dataCity, null, 2)}</div>
     </>
   )
 };
