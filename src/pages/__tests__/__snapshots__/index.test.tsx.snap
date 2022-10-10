@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="sc-a5a617a-0 fArwKn"
+  >
+    <main
+      class="sc-a5a617a-1 gREgY"
+    >
+      <h1
+        class="sc-a5a617a-2 isicKt"
+      >
+        Welcome to 
+        <a
+          href="https://nextjs.org"
+        >
+          Next.js!
+        </a>
+      </h1>
+      <p
+        class="sc-a5a617a-3 iWSRVm"
+      >
+        Get started by editing
+        <code
+          class="sc-a5a617a-4 kntbaG"
+        >
+          pages/index.tsx
+        </code>
+      </p>
+    </main>
+  </div>
+</div>
+`;
