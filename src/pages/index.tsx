@@ -9,6 +9,8 @@ import {
   CodeTag,
 } from '@styles/sharedStyles';
 
+import WeatherDisplay from '@features/weatherDisplay/WeatherDisplay';
+
 const Home: NextPage = () => {
   return (
     <Container>
@@ -26,6 +28,8 @@ const Home: NextPage = () => {
           Get started by editing
           <CodeTag>pages/index.tsx</CodeTag>
         </Description>
+
+        <WeatherDisplay />
       </Main>
     </Container>
   )

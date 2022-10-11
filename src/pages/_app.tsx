@@ -1,10 +1,15 @@
 import type { AppProps } from 'next/app'
+import { Provider } from 'react-redux';
+import { store } from 'store';
+
 import themingWrapper from '@helpers/themingHelper';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {themingWrapper(<Component {...pageProps} />)}
+      <Provider store={store}>
+        {themingWrapper(<Component {...pageProps} />)}
+      </Provider>
     </>
   )
 }
