@@ -17,27 +17,27 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
-    }
-    body {
-      color: white;
-      background: black;
-    }
-  }
-  @media (prefers-color-scheme: dark) {
-    .card,
-    .footer {
-      border-color: #222;
-    }
-    .code {
-      background: #111;
-    }
-    .logo img {
-      filter: invert(1);
-    }
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   html {
+  //     color-scheme: dark;
+  //   }
+  //   body {
+  //     color: white;
+  //     background: black;
+  //   }
+  // }
+  // @media (prefers-color-scheme: dark) {
+  //   .card,
+  //   .footer {
+  //     border-color: #222;
+  //   }
+  //   .code {
+  //     background: #111;
+  //   }
+  //   .logo img {
+  //     filter: invert(1);
+  //   }
+  // }
     
 `
 
