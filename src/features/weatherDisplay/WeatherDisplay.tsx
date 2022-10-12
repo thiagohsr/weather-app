@@ -1,19 +1,28 @@
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "@hooks/store-hook";
 import { receivedWeather } from "./weatherDisplaySlice";
+import { useGetWeatherByCoordsQuery } from "common/services/weatherSvc";
 
 const WeatherDisplay = () => {
   const dispatch = useAppDispatch();
-  const weather = useAppSelector((state) => state.weather);
-
+  const { weather } = useAppSelector((state) => state.weather);
+  const { isLoading, data } = useGetWeatherByCoordsQuery(null);
+  
   useEffect(() => {
-    fetch("http://localhost:3000/api/weather").then(async (response) => {
-      const result = await response.json();
-      dispatch(receivedWeather(result));
-    });
-  }, [dispatch]);
+    dispatch(receivedWeather(data));
+  }, [data, dispatch]);
 
-  return <div>Empty store objects {JSON.stringify(weather)}</div>;
+  if (isLoading) {
+    return <>Weather is Loading!</>
+  }
+
+  return (
+    <>
+      <div>From RTKQuery? {JSON.stringify(data, null, 2)}</div>
+      <p>Queries</p>
+      <div>FromSlice? {JSON.stringify(weather, null, 2)}</div>
+    </>
+  )
 };
 
 export default WeatherDisplay;
