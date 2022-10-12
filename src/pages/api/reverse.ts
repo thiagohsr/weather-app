@@ -1,7 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { cityWeatherType } from 'common/types/weather'
-
 
 export default function handler(
   req: NextApiRequest,
