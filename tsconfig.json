@@ -21,7 +21,8 @@
       "@store/*": ["store/*"],
       "@hooks/*": ["common/hooks/*"],
       "@features/*": ["features/*"],
-      "@helpers/*": ["common/helpers/*"]
+      "@helpers/*": ["common/helpers/*"],
+      "@services/*": ["common/services/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
