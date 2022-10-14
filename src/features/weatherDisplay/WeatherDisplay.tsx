@@ -19,7 +19,6 @@ import IconLoaderStyled from "@common/components/WeatherIconLoader";
 const WeatherDisplay = () => {
   const dispatch = useAppDispatch();
   const { weather } = useAppSelector((state) => state.weather);
-  console.log('weather::beforeCoords', weather.coord);
   const { forecast } = useAppSelector((state) => state.weather);
   const coordinates = GeolocationCoordinates();
   const latitude = weather?.coord?.lat || Number(coordinates?.coords?.latitude?.toFixed(4));
@@ -44,7 +43,6 @@ const WeatherDisplay = () => {
     longitude
   }, { skip: !latitude && !longitude });
 
-  console.log(dataCity, '!weather?.main:: ', !weather?.main, '<>', !forecast?.current);
   if (isLoading || (!forecast?.current)) {
     return <>Weather is Loading!</>;
   }
@@ -55,7 +53,6 @@ const WeatherDisplay = () => {
       {/* <CityName>{ weather?.name }, { weather?.sys?.country }</CityName>
       <Temperature>{ Math.round(weather?.main?.temp) }°C</Temperature>
       <Description>Feels like { Math.round(weather?.main?.feels_like) }°C. <span style={{ textTransform: 'capitalize' }}>{ weather?.weather[0]?.description }</span>.</Description> */}
-      <hr />
       <CityName>{ weather?.name || dataCity?.name }, { weather?.sys?.country || dataCity?.country }</CityName>
       <Temperature>{ Math.round(forecast.current?.temp) }°C</Temperature>
       <Description>

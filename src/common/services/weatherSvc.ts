@@ -24,20 +24,6 @@ export const weatherApi = createApi({
       query: ({ searchTerm }) => {
         return `weatherByName?searchTerm=${searchTerm}`
       },
-      // transformResponse: (data:any) => {
-      //   const { list } = data;
-      //   const adaptedList = list?.map((item:any) => ({
-      //     ...item,
-      //     label: `${item?.name} | ${item?.sys?.country}`
-      //   }))
-
-      //   console.log('adaptedList::Called ', adaptedList);
-
-      //   return {
-      //     ...data,
-      //     list: adaptedList,
-      //   };
-      // }
     }),
   }),
 })

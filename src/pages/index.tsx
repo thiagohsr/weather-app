@@ -22,9 +22,7 @@ const Home: NextPage = () => {
           Get started by editing
           <CodeTag>pages/index.tsx</CodeTag>
         </Description> */}
-        <div style={{ width: '100%' }}>
-          <Search />
-        </div>
+        <Search />
         <WeatherDisplay />
       </Main>
     </Container>
