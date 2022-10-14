@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Main>
-        <Title>Tammana Weather app</Title>
+        <Title>Weather app</Title>
         {/* <Description>
           Get started by editing
           <CodeTag>pages/index.tsx</CodeTag>
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         <div style={{ width: '100%' }}>
           <Search />
         </div>
-        {/* <WeatherDisplay /> */}
+        <WeatherDisplay />
       </Main>
     </Container>
   );

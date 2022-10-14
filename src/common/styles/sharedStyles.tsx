@@ -6,33 +6,47 @@ const Container = styled.div`
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  min-height: 100vh;
 `
+
 const Main = styled.main`
-  padding: 5rem 0;
+  max-width: 40%;
+  padding: 5rem 1.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
 `
 
 const Title = styled.h1`
   margin: 2.5rem 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3.5rem;
   text-align: center;
   text-decoration: none;
-  a {
-    color: ${({ theme }) => theme.colors.secondary};
-    text-decoration: none;
-    &:hover,
-    :focus,
-    :active {
-      text-decoration: underline;
-    }
-  }
+  text-transform: uppercase;
+`
+
+const CityName = styled.h1`
+  margin: 1.5rem 0 0;
+  line-height: 1.15;
+  font-size: 2.5rem;
+  text-align: center;
+  text-decoration: none;
+`
+
+const Temperature = styled.h1`
+  margin: 1.5rem 0 0;
+  line-height: 1.15;
+  font-size: 3.6rem;
+  text-align: center;
+  text-decoration: none;
 `
 
 const Description = styled.p`
@@ -40,6 +54,7 @@ const Description = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
 `
+
 const CodeTag = styled.code`
   background: #fafafa;
   border-radius: 5px;
@@ -50,4 +65,8 @@ const CodeTag = styled.code`
     Bitstream Vera Sans Mono, Courier New, monospace;
 `
 
-export { Container, Main, Title, Description, CodeTag }
+const ForecastHolder = styled.div`
+  width: 100%;
+`;
+
+export { CityName, Container, ForecastHolder, Main, Description, CodeTag, Temperature, Title }

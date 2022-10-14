@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   const { query } = req;
   await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${query?.lat}&lon=${query?.lon}&cnt=7&units=metric&exclude=minutely,hourly,alerts&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`
+    `https://api.openweathermap.org/data/3.0/onecall?lat=${query?.lat}&lon=${query?.lon}&cnt=7&units=metric&exclude=minutely,hourly,alerts&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`
   ).then(response => {
     if (response.ok) {
       return response.json();

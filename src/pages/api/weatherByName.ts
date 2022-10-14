@@ -1,12 +1,9 @@
-// https://openweathermap.org/data/2.5/find?q=lisbon&appid=439d4b804bc8187953eb36d2a8c26a02&units=metric
-
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { cityWeatherType } from 'common/types/weather'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any>
+  res: NextApiResponse<any> //TODO: declare types
 ) {
   const { query } = req;
   console.error('WeatherByName API with: ', req.query);

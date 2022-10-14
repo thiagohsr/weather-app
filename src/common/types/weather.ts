@@ -12,6 +12,7 @@ export type cityType = {
 }
 
 export type weatherType = {
+  name: string,
   dt: number,
   main: {
     temp: number,

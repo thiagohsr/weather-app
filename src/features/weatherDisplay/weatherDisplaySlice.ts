@@ -16,6 +16,7 @@ export interface cityData {
 
 interface CityWeatherState {
   weather: cityWeatherType
+  forecast: any
 }
 
 const initialState: CityWeatherState = {
@@ -25,7 +26,8 @@ const initialState: CityWeatherState = {
     cnt: 0,
     list: [],
     city: {}
-  }
+  },
+  forecast: [],
 }
 
 const weatherDisplaySlice = createSlice({
@@ -34,9 +36,12 @@ const weatherDisplaySlice = createSlice({
   reducers: {
     receivedWeather(state, action: PayloadAction<cityWeatherType>) {
       state.weather = action.payload;
+    },
+    receivedForecast(state, action: PayloadAction<any>) {
+      state.forecast = action.payload;
     }
   },
 });
 
-export const { receivedWeather } = weatherDisplaySlice.actions;
+export const { receivedWeather, receivedForecast } = weatherDisplaySlice.actions;
 export default weatherDisplaySlice.reducer;
