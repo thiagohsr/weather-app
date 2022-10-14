@@ -20,13 +20,33 @@ export const weatherApi = createApi({
         return response;
       }
     }),
+    getWeatherByName: builder.query({
+      query: ({ searchTerm }) => {
+        return `weatherByName?searchTerm=${searchTerm}`
+      },
+      // transformResponse: (data:any) => {
+      //   const { list } = data;
+      //   const adaptedList = list?.map((item:any) => ({
+      //     ...item,
+      //     label: `${item?.name} | ${item?.sys?.country}`
+      //   }))
+
+      //   console.log('adaptedList::Called ', adaptedList);
+
+      //   return {
+      //     ...data,
+      //     list: adaptedList,
+      //   };
+      // }
+    }),
   }),
 })
-// https://api.openweathermap.org/geo/1.0/
 
 export const {
   useGetWeatherByCoordsQuery,
   useLazyGetCityNameByCoordsQuery,
   useGetCityNameByCoordsQuery,
   useLazyGetWeatherByCoordsQuery,
+  useGetWeatherByNameQuery,
+  useLazyGetWeatherByNameQuery,
 } = weatherApi;
