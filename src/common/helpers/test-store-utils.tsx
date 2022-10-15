@@ -9,6 +9,7 @@ import type { RootState, AppDispatch, store } from '@store/index';
 // As a basic setup, import your same slice reducers
 // import userReducer from '../features/users/userSlice'
 import weatherReducer from '@features/weatherDisplay/weatherDisplaySlice';
+import favouriteCitiesListReducer from '@features/favouriteCitiesList/favouriteCitiesListSlice';
 import { weatherApi } from '@services/weatherSvc';
 
 
@@ -30,7 +31,8 @@ export function renderWithProviders(
     store = configureStore({
       reducer: {
         [weatherApi.reducerPath]: weatherApi.reducer,
-        weather: weatherReducer
+        weather: weatherReducer,
+        citiesList: favouriteCitiesListReducer,
       },
       middleware(getDefaultMiddleware) {
           return getDefaultMiddleware().concat(weatherApi.middleware)

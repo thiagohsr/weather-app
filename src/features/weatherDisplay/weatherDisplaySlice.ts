@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { coordinateType, cityWeatherType, cityType, cityWeatherDailyType } from 'common/types/weather';
+import type { cityWeatherType, cityType } from 'common/types/weather';
 
 interface CityWeatherState extends cityType {
   weather: cityWeatherType
