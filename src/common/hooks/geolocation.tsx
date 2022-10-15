@@ -29,8 +29,17 @@ function GeolocationCoordinates (): GeolocationPosition | null {
             setCoordinates(success);
           },
           (error) => {
-            if (error.code == error.PERMISSION_DENIED)
+            if (error.code == error.PERMISSION_DENIED) {
               console.log("Access for geolocation is needed :)");
+              setCoordinates({ // Coordinates default to Lisbon
+                ...coordinates,
+                coords: {
+                  ...initialState.coords,
+                  latitude: 38.7167,
+                  longitude: -9.1333,
+                }
+              });
+            }
           });
       }
       fetchGeolocation();
@@ -40,15 +49,6 @@ function GeolocationCoordinates (): GeolocationPosition | null {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const {
-    latitude,
-    longitude
-  } = coordinates?.coords;
-
-  if (!latitude && !longitude) {
-    return null;
-  }
 
   return coordinates;
 };

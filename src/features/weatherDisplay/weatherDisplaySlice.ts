@@ -1,21 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { coordinateType, cityWeatherType } from 'common/types/weather';
+import type { coordinateType, cityWeatherType, cityType, cityWeatherDailyType } from 'common/types/weather';
 
-export interface cityData {
-  city: {
-    id: number,
-    name: string,
-    coord: coordinateType,
-    country: string,
-    population: number,
-    timezone: number,
-    sunrise: number,
-    sunset: number
-  }
-}
-
-interface CityWeatherState {
+interface CityWeatherState extends cityType {
   weather: cityWeatherType
+  forecast: any
 }
 
 const initialState: CityWeatherState = {
@@ -24,8 +12,17 @@ const initialState: CityWeatherState = {
     message: 0,
     cnt: 0,
     list: [],
-    city: {}
-  }
+    city: {},
+  },
+  forecast: [],
+  id: 0,
+  name: undefined,
+  coord: { lat: undefined, lon: undefined},
+  country: undefined,
+  population: 0,
+  timezone: 0,
+  sunrise: 0,
+  sunset: 0
 }
 
 const weatherDisplaySlice = createSlice({
@@ -34,9 +31,12 @@ const weatherDisplaySlice = createSlice({
   reducers: {
     receivedWeather(state, action: PayloadAction<cityWeatherType>) {
       state.weather = action.payload;
+    },
+    receivedForecast(state, action: PayloadAction<any>) {
+      state.forecast = action.payload;
     }
   },
 });
 
-export const { receivedWeather } = weatherDisplaySlice.actions;
+export const { receivedWeather, receivedForecast } = weatherDisplaySlice.actions;
 export default weatherDisplaySlice.reducer;
