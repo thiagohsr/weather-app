@@ -22,12 +22,18 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
 export function renderWithProviders(
   ui: React.ReactElement,
   {
-    preloadedState = {},
+    preloadedState = {
+      weatherApi: undefined,
+      weather: undefined
+    },
     // Automatically create a store instance if no store was passed in
     store = configureStore({
       reducer: {
         [weatherApi.reducerPath]: weatherApi.reducer,
         weather: weatherReducer
+      },
+      middleware(getDefaultMiddleware) {
+          return getDefaultMiddleware().concat(weatherApi.middleware)
       },
       preloadedState }),
     ...renderOptions
