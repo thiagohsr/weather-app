@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {
   useGetWeatherByCoordsQuery,
   useGetCityNameByCoordsQuery,
-} from "common/services/weatherSvc";
+} from "@services/weatherSvc";
 import { useAppSelector, useAppDispatch } from "@hooks/store-hook";
 import { receivedForecast } from "./weatherDisplaySlice";
 import GeolocationCoordinates from "@hooks/geolocation";

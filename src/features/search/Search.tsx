@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   useGetWeatherByNameQuery,
-} from "common/services/weatherSvc";
+} from "@services/weatherSvc";
 
 import { useAppDispatch } from "@hooks/store-hook";
 import { receivedWeather } from "@features/weatherDisplay/weatherDisplaySlice";
@@ -13,6 +13,7 @@ function debounce(func: { apply: (arg0: any, arg1: any[]) => void; }, timeout = 
   let timer: string | number | NodeJS.Timeout | undefined;
   return (...args: any[]) => {
     clearTimeout(timer);
+
     timer = setTimeout(() => { func.apply(this, args); }, timeout);
   };
 }
@@ -24,7 +25,7 @@ const Search = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const citySearch = useGetWeatherByNameQuery(
     { searchTerm: value },
-    { skip: value?.length < 4 }
+    { skip: value?.length <= 3 }
   );
 
   useEffect(function fillCitiesList() {
@@ -87,7 +88,11 @@ const Search = () => {
     <>
       <SearchHolder onMouseLeave={handleResetList}>
         <DropdownIndicator />
-        <SearchInput onChange={processChangeValue} onKeyDown={processChangeValue} />
+        <SearchInput
+          placeholder='Search some place...'
+          onChange={processChangeValue}
+          onKeyDown={processChangeValue}
+        />
         <SearchResultList>
           {citiesList?.length ? citiesList.map((item:any, index: number | undefined) => {
             return item.name && (
