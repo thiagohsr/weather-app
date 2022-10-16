@@ -9,7 +9,7 @@ const Container = styled.div`
 `
 
 const Main = styled.main`
-  max-width: 20%;
+  max-width: 40%;
   width: 100%;
   padding: 5rem 1.5rem;
   flex: 1;

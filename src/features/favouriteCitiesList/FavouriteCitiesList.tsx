@@ -9,11 +9,21 @@ import {
 } from "@styles/sharedStyles";
 import CurrentWeather from "@components/CurrentWeather";
 import ForecastList from "@components/ForecastList";
+import { useGetWeatherByCoordsQuery } from "@common/services/weatherSvc";
 
 const FavouriteCitiesList = () => {
   const { cities } = useAppSelector((state) => state.citiesList);
   const dispatch = useAppDispatch();
-  const [currentCity, setCurrentCity] = useState({});
+  const [currentCity, setCurrentCity] = useState<any>({});
+  
+  const { isLoading, data } = useGetWeatherByCoordsQuery(
+    {
+      latitude: currentCity?.lat,
+      longitude: currentCity?.lon,
+    },
+    { skip: !currentCity?.lat && !currentCity?.lon }
+  );
+  
   console.log("FavouriteCitiesList::store::called ", Object.entries(cities));
 
   useEffect(() => {
@@ -55,8 +65,8 @@ const FavouriteCitiesList = () => {
           <div>Do not have added cities.</div>
         )}
       </div>
-      <CurrentWeather />
-      <ForecastList />
+      <CurrentWeather {...{ forecast: data, dataCity: currentCity, weather: currentCity }} />
+      <ForecastList {...{ forecast: data }} />
     </>
   );
 };
