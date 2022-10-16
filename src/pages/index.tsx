@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from 'next/link';
 
 import {
   Container,
@@ -18,10 +19,7 @@ const Home: NextPage = () => {
     <Container>
       <Main>
         <Title>Weather app</Title>
-        {/* <Description>
-          Get started by editing
-          <CodeTag>pages/index.tsx</CodeTag>
-        </Description> */}
+        <Link href={'/citiesList'}>Favourited cities</Link>
         <Search />
         <WeatherDisplay />
       </Main>

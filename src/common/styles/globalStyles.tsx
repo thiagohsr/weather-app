@@ -8,13 +8,15 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 62.5%;
   }
-  a {
+  a, li {
     color: inherit;
     text-decoration: none;
   }
   * {
     box-sizing: border-box;
+    font-size: 1.6rem;
   }
 
   // @media (prefers-color-scheme: dark) {

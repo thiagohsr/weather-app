@@ -6,8 +6,8 @@ const IconLoaderStyled = styled.img.attrs({
   height: 32
 })`
   position : absolute;
-  top: -2px;
-  left: -35px;
+  top: -5px;
+  left: 0px;
 `
 
 export default IconLoaderStyled;

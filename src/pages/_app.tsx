@@ -1,7 +1,8 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import { store } from 'store';
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistedStore } from 'store';
 
 import themingWrapper from '@helpers/themingHelper';
 
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Provider store={store}>
-        {themingWrapper(<Component {...pageProps} />)}
+        <PersistGate loading={null} persistor={persistedStore}>
+          {themingWrapper(<Component {...pageProps} />)}
+        </PersistGate>
       </Provider>
     </>
   )
