@@ -1,9 +1,15 @@
 import { useAppDispatch, useAppSelector } from "@common/hooks/store-hook";
-import { DefaultList, ListItem } from "@styles/sharedStyles";
+import { removeCity } from "@features/favouriteCitiesList/favouriteCitiesListSlice";
+import { CoordinatesLabel, DefaultList, DeleteButton, ListItem } from "@styles/sharedStyles";
 
 const FavouriteCitiesList = () => {
   const { cities } = useAppSelector((state) => state.citiesList);
+  const dispatch = useAppDispatch();
   console.log("FavouriteCitiesList::store::called ", Object.entries(cities));
+
+  const handleRemoveCity = (cityKey: string) => () => {
+    dispatch(removeCity({ cityKey }));
+  };
 
   return (
     <>
@@ -12,15 +18,21 @@ const FavouriteCitiesList = () => {
           {Object.entries(cities)?.map((city: any[]) => {
             const [key, cityData] = city;
             console.log("City::called ", city);
+
             return (
               <ListItem key={key}>
-                {cityData.name} | {cityData.country}
+                <DeleteButton onClick={handleRemoveCity(key)}>x</DeleteButton>
+                {cityData.name} | {cityData.country} | {cityData.state}
+                <br />
+                <CoordinatesLabel>
+                  {cityData.lat}, {cityData.lon}
+                </CoordinatesLabel>
               </ListItem>
             );
           })}
         </DefaultList>
       ) : (
-          <div>Do not have added cities.</div>
+        <div>Do not have added cities.</div>
       )}
     </>
   );

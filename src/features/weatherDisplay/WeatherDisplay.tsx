@@ -10,11 +10,10 @@ import GeolocationCoordinates from "@hooks/geolocation";
 
 import Grid from "styled-components-grid";
 import {
-  Description,
-  CityName,
-  Temperature,
   ForecastHolder,
 } from "@styles/sharedStyles";
+import CurrentWeather from "@components/CurrentWeather";
+import ForecastList from "@components/ForecastList";
 
 import IconLoaderStyled from "@common/components/WeatherIconLoader";
 
@@ -66,49 +65,18 @@ const WeatherDisplay = () => {
     return <>Weather is Loading!</>;
   }
 
-  const checkListByCityName = (placeToCompare: any) =>
-    !!Object.entries(cities).filter((item: any) => item[1].name === placeToCompare.name && item[1].country === placeToCompare?.sys?.country).length;
-
-  const alreadyInList = !!cities[`${forecast?.lat}${forecast?.lon}`] || checkListByCityName(weather || dataCity);
+  const alreadyInList = !!cities[`${forecast?.lat}${forecast?.lon}`];
 
   return (
     <>
       <button
         onClick={alreadyInList ?
-          () => { console.log('navigate::ToList')} :
+          () => { console.log('navigate::ToList ', forecast, weather, dataCity)} :
           handleAddToList
-        }>{ alreadyInList ? `City Already in list` : `Add city` }</button>
-      <CityName>{ weather?.name || dataCity?.name }, { weather?.sys?.country || dataCity?.country }</CityName>
-      <Temperature>{ Math.round(forecast.current?.temp) }°C</Temperature>
-      <Description>
-        Feels like { Math.round(forecast.current.feels_like) }°C.
-        <span style={{ textTransform: 'capitalize' }}> { forecast?.current?.weather[0].description }</span>.
-      </Description>
-      <ForecastHolder style={{ width: "100%" }}>
-        <h3>8-day forecast</h3>
-        {forecast.daily.map((item: any) => {
-          const forecastDay = new Date(item.dt * 1000).toDateString()
-
-          return (
-            <div key={item?.dt}>
-              <Grid style={{ marginBottom: 15, paddingBottom: 10, borderBottom: '1px solid #a8a8a8' }}>
-                <Grid.Unit size={{ mobile: 3 / 9, tablet: 3 / 9, desktop: 3 / 8}}>
-                  { forecastDay.substring(forecastDay.length - 4, 0) }
-                </Grid.Unit>
-                <Grid.Unit size={{ mobile: 3 / 9, tablet: 3 / 9, desktop: 2 / 8 }} style={{ position: "relative" }}>
-                  <IconLoaderStyled src={`/images/${item.weather[0]?.icon}@2x.png`} />{ Math.round(item?.temp.max) }/{ Math.round(item?.temp.min) }°C
-                </Grid.Unit>
-                <Grid.Unit size={{ mobile: 3 / 9, tablet: 3 / 9, desktop: 3 / 8 }}>{
-                  item.weather[0]?.description
-                }</Grid.Unit>
-              </Grid>
-            </div>
-          )
-        })}
-      </ForecastHolder>
-      {/* <div>Fforecast RTKQuery? {JSON.stringify(forecast.daily[0], null, 2)}</div> */}
-      
-      {/* <div>City From RTKQuery? {JSON.stringify(dataCity, null, 2)}</div> */}
+        }>{ alreadyInList ? `City Already in list` : `Add city` }
+      </button>
+      <CurrentWeather {...{ weather, dataCity, forecast} } />
+      <ForecastList { ...{ forecast } }/>
     </>
   );
 };

@@ -11,6 +11,7 @@ import { weatherApi } from 'common/services/weatherSvc';
 const persistConfig = {
   key: 'root',
   storage: storage,
+  blacklist: ['weather', 'weatherApi'],
   stateReconcilier: autoMergeLevel1,
 }
 

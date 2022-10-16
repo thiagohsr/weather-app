@@ -15,8 +15,17 @@ const favouriteCitiesListSlice = createSlice({
         ...{ [action.payload.key]: action.payload },
       };
     },
+    removeCity(state, action: PayloadAction<any>) {
+      const { cityKey } = action.payload;
+      
+      delete state.cities[`${cityKey}`];
+      console.log(JSON.stringify(state.cities), 'addCity::called', cityKey);
+      state.cities = {
+        ...state.cities,
+      };
+    }
   },
 });
 
-export const { addCity } = favouriteCitiesListSlice.actions;
+export const { addCity, removeCity } = favouriteCitiesListSlice.actions;
 export default favouriteCitiesListSlice.reducer;
