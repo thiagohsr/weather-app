@@ -67,6 +67,7 @@ const WeatherDisplay = () => {
     <>
       <WeatherDisplayHolder>
         <AddToListButton
+          title={ alreadyInList ? `Added to list` : `Add to list` }
           alreadyInList={alreadyInList}
           onClick={alreadyInList ?
             () => { router.push({ pathname: '/citiesList' }) } :
@@ -74,8 +75,8 @@ const WeatherDisplay = () => {
           }>{ alreadyInList ? `Added to list` : `Add to list` }
         </AddToListButton>
         <CurrentWeather {...{ weather, dataCity, forecast} } />
-        <ForecastList { ...{ forecast } }/>
       </WeatherDisplayHolder>
+      <ForecastList { ...{ forecast } }/>
     </>
   );
 };
