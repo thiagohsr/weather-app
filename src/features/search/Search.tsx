@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   useGetWeatherByNameQuery,
 } from "@services/weatherSvc";
@@ -19,6 +19,7 @@ function debounce(func: { apply: (arg0: any, arg1: any[]) => void; }, timeout = 
 }
 
 const Search = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
   const [citiesList, setCitiesList] = useState<Array<any>>([]);
@@ -39,19 +40,19 @@ const Search = () => {
     }
   }, [citySearch.status, citiesList?.length]);
 
-  const handleResetList = () => () => {
+  const handleResetList = () => {
     setErrorMessage('')
     setCitiesList([]);
   }
 
   const handleOnSelect = (item: any) => () => {
     dispatch(receivedWeather(item));
-    handleResetList()();
+    handleResetList();
   };
 
-  const processChangeValue = debounce((inputValue: any) => { 
+  const processChangeValue = debounce((inputValue: any) => {
     citySearch?.data?.list?.length && setCitiesList(citySearch?.data?.list);
-    setValue(inputValue.target.value)
+    setValue(inputValue.target.value || inputRef?.current?.value)
   });
 
   const Svg = (p: JSX.IntrinsicElements['svg']) => (
@@ -65,14 +66,18 @@ const Search = () => {
     />
   );
 
-  const DropdownIndicator = () => (
-    <div style={{
+  const SearchButtonIconAction = () => (
+    <button
+      onClick={processChangeValue}
+      style={{
+        backgroundColor: "transparent",
+        border: "none",
         color: theme.colors.primary,
         height: 24,
         width: 32,
         position: "absolute",
-        right: 20,
-        top: 25,
+        right: 22,
+        top: 28,
       }}>
       <Svg>
         <path
@@ -81,15 +86,16 @@ const Search = () => {
           fillRule="evenodd"
         />
       </Svg>
-    </div>
+    </button>
   );
 
   return (
     <>
       <SearchHolder onMouseLeave={handleResetList}>
-        <DropdownIndicator />
+        <SearchButtonIconAction />
         <SearchInput
-          placeholder='Search some place...'
+          ref={inputRef}
+          placeholder="Search some place..."
           onChange={processChangeValue}
           onKeyDown={processChangeValue}
         />

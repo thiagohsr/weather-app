@@ -119,6 +119,16 @@ const CoordinatesLabel = styled.span`
   color: #848181;
 `;
 
+const NavBar = styled.nav`
+  width: 100%;
+  background-color: #eee;
+  border-radius: .5rem;
+  padding: 1.5rem;
+  & a {
+    margin-right: 1.5rem;
+  }
+`;
+
 export {
   CityName,
   CodeTag,
@@ -130,6 +140,7 @@ export {
   ListItem,
   ForecastHolder,
   Main,
+  NavBar,
   Temperature,
   Title,
 }

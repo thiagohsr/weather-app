@@ -5,7 +5,6 @@ import {
 } from "@styles/sharedStyles";
 
 const CurrentWeather = (props: any) => {
-  console.log('CurrentWeather::called ', props);
   const {
     weather,
     dataCity,
