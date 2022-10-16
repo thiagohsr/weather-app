@@ -12,6 +12,14 @@ const CurrentWeather = (props: any) => {
     forecast,
   } = props;
 
+  if(!weather || !dataCity || !forecast ||
+    !Object.entries(weather).length ||
+    !Object.entries(dataCity).length ||
+    !Object.entries(forecast).length
+  ) {
+    return null;
+  }
+
   return (
     <>
     <CityName>{ weather?.name || dataCity?.name }, { weather?.sys?.country || dataCity?.country }</CityName>

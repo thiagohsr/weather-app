@@ -5,6 +5,10 @@ import Grid from "styled-components-grid";
 const ForecastList = (props:any) => {
   const { forecast } = props;
 
+  if (!forecast || !Object.entries(forecast).length) {
+    return null;
+  }
+
   return (
     <>
       <ForecastHolder style={{ width: "100%" }}>

@@ -8,14 +8,8 @@ import { receivedForecast } from "./weatherDisplaySlice";
 import { addCity } from "@features/favouriteCitiesList/favouriteCitiesListSlice";
 import GeolocationCoordinates from "@hooks/geolocation";
 
-import Grid from "styled-components-grid";
-import {
-  ForecastHolder,
-} from "@styles/sharedStyles";
 import CurrentWeather from "@components/CurrentWeather";
 import ForecastList from "@components/ForecastList";
-
-import IconLoaderStyled from "@common/components/WeatherIconLoader";
 
 const WeatherDisplay = () => {
   const dispatch = useAppDispatch();
@@ -51,9 +45,7 @@ const WeatherDisplay = () => {
       lat: forecast?.lat,
       lon: forecast?.lon,
     }
-    console.log('Add to list::dataCity ', addCityPayload);
     dispatch(addCity(addCityPayload));
-    // const cityWeather = useGetWeatherByNameQuery(dataCity?.name);
   }
 
   const { isLoading: isLoadingCity, data: dataCity } = useGetCityNameByCoordsQuery({
