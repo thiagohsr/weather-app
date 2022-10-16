@@ -25,7 +25,7 @@ const FavouriteCitiesList = () => {
     { skip: !currentCity?.lat && !currentCity?.lon }
   );
 
-  const handleRemoveCity = (cityKey: string) => (evt: MouseEventHandler) => {
+  const handleRemoveCity = (cityKey: string) => (evt: any) => {
     evt.stopPropagation();
     dispatch(removeCity({ cityKey }));
   };
