@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   useGetWeatherByCoordsQuery,
   useGetCityNameByCoordsQuery,
@@ -10,8 +11,10 @@ import GeolocationCoordinates from "@hooks/geolocation";
 
 import CurrentWeather from "@components/CurrentWeather";
 import ForecastList from "@components/ForecastList";
+import {WeatherDisplayHolder, AddToListButton} from './WeatherDisplay.style';
 
 const WeatherDisplay = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { cities } = useAppSelector((state) => state.citiesList);
   const { weather } = useAppSelector((state) => state.weather);
@@ -40,7 +43,8 @@ const WeatherDisplay = () => {
         When do not have dataCity (when first load)
     */
     const addCityPayload = {
-    ...dataCity,
+      name: weather.name || dataCity?.name,
+      country: weather?.sys?.country || dataCity?.country ,
       key: `${forecast?.lat}${forecast?.lon}`,
       lat: forecast?.lat,
       lon: forecast?.lon,
@@ -61,14 +65,17 @@ const WeatherDisplay = () => {
 
   return (
     <>
-      <button
-        onClick={alreadyInList ?
-          () => { console.log('navigate::ToList ', forecast, weather, dataCity)} :
-          handleAddToList
-        }>{ alreadyInList ? `City Already in list` : `Add city` }
-      </button>
-      <CurrentWeather {...{ weather, dataCity, forecast} } />
-      <ForecastList { ...{ forecast } }/>
+      <WeatherDisplayHolder>
+        <AddToListButton
+          alreadyInList={alreadyInList}
+          onClick={alreadyInList ?
+            () => { router.push({ pathname: '/citiesList' }) } :
+            handleAddToList
+          }>{ alreadyInList ? `Added to list` : `Add to list` }
+        </AddToListButton>
+        <CurrentWeather {...{ weather, dataCity, forecast} } />
+        <ForecastList { ...{ forecast } }/>
+      </WeatherDisplayHolder>
     </>
   );
 };

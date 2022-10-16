@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
-import Link from 'next/link';
 import FavouriteCitiesList from '@features/favouriteCitiesList/FavouriteCitiesList';
 import {
   Container,
   Main,
   Title,
-  Description,
-  CodeTag,
 } from '@styles/sharedStyles';
+import Navigation from '@components/Navigation';
 
 const CitiesList: NextPage = () => {
   return(
@@ -16,8 +14,7 @@ const CitiesList: NextPage = () => {
         <Title>
           Favourite Cities List
         </Title>
-        <Link href={'/'}>Navigate to home</Link>
-
+        <Navigation />
         <FavouriteCitiesList />
       </Main>
     </Container>

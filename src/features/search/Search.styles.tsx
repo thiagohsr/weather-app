@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SearchHolder = styled.div`
+const SearchHolder = styled('div')`
   position: relative;
   width: 100%;
   padding: 20px;
