@@ -103,8 +103,8 @@ const DeleteButton = styled.button`
   cursor: pointer
 `
 
-const ListItem = styled.li`
-  background-color: rgb(255 255 255);
+const ListItem = styled("li")<HTMLLIElement | any>`
+  background-color: ${props => props?.isSelected ? 'rgb(237 240 205)' : 'rgb(255 255 255)'};
   color: rgb(0 0 0);
   padding: 5px 15px;
   border-bottom: 1px solid #a8a8a8;

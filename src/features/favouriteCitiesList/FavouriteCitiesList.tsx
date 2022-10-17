@@ -42,7 +42,7 @@ const FavouriteCitiesList = () => {
             {Object.entries(cities)?.map((city: any[]) => {
               const [key, cityData] = city;
               return (
-                <ListItem key={key} onClick={handleShowSelected(key)}>
+                <ListItem isSelected={key === currentCity?.key} key={key} onClick={handleShowSelected(key)}>
                   <DeleteButton onClick={handleRemoveCity(key)}>x</DeleteButton>
                   {cityData.name} | {cityData.country}
                   <br />
