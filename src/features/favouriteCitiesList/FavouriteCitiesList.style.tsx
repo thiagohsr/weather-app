@@ -18,4 +18,11 @@ const FavouriteCitiesListHolder = styled.div`
   }
 `;
 
-export default FavouriteCitiesListHolder;
+const CitiesListEmptyState = styled.div`
+  background-color: #efef86;
+  border-radius: .5rem;
+  width: 100%;
+  padding: .5rem 1.5rem;
+`
+
+export { CitiesListEmptyState, FavouriteCitiesListHolder };
