@@ -10,7 +10,7 @@ import {
   DeleteButton,
   ListItem,
 } from "@styles/sharedStyles";
-import FavouriteCitiesListHolder from "./FavouriteCitiesList.style";
+import { CitiesListEmptyState, FavouriteCitiesListHolder } from "./FavouriteCitiesList.style";
 
 const FavouriteCitiesList = () => {
   const { cities } = useAppSelector((state) => state.citiesList);
@@ -54,7 +54,7 @@ const FavouriteCitiesList = () => {
             })}
           </DefaultList>
         ) : (
-          <div>Do not have added cities.</div>
+          <CitiesListEmptyState>Do not have added cities.</CitiesListEmptyState>
         )}
       </FavouriteCitiesListHolder>
       <CurrentWeather {...{ forecast: data, dataCity: currentCity, weather: currentCity }} />

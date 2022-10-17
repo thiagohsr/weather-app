@@ -1,39 +1,64 @@
+![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=therealsujitk-vercel-badge)
+
 # Weather app code challenge for Tamanna
 
+App to look up for weather based on geolocation and throught the Open Weather Api endpoints. Visit <a href="https://weather-app-thiagoramos.vercel.app/" target="_blank" rel="noopener noreferrer">app on vercel</a>.
 
+## Run the project
+### Required
+- Nodejs v14.17.6 - I do recommend [NVM](https://github.com/creationix/nvm#installation) to install and manage node js versions.
 
+## Install dependencies
+After has the right node version, you need to run:
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```bash
+npm install
+#or
+yarn
+```
 
 ## Getting Started
+Before run the project, you need to:
+- Create a account in [Open weather map](https://openweathermap.org/) to get your API KEY.
+- Rename the `sample.env.local` to `.env.local` and update the keys to your variable values, mainly the `NEXT_PUBLIC_WEATHER_API_KEY`. This will enable the communication with the openweathermap API.
 
-First, run the development server:
+To get the project running in you local development server, run:
 
 ```bash
 npm run dev
 # or
 yarn dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Test the project
+To see tests results you can run:
+```bash
+npm run test
+# or
+yarn test
+```
+If you need to see the coverage:
+```bash
+npm run test:coverage
+# or
+yarn test:coverage
+```
+## Commit Policy [git-cz](https://www.npmjs.com/package/git-cz)
+I've using while build this project the command `npx git-cz` and following the recipe. They suggest a good way to organize the project history.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Learn more about depencies on the project
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
+### NextJS
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Redux ToolKit
+- https://redux-toolkit.js.org/
+- https://redux-toolkit.js.org/rtk-query/overview
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

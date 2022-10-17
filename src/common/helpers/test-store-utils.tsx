@@ -25,7 +25,8 @@ export function renderWithProviders(
   {
     preloadedState = {
       weatherApi: undefined,
-      weather: undefined
+      weather: undefined,
+      citiesList: undefined,
     },
     // Automatically create a store instance if no store was passed in
     store = configureStore({

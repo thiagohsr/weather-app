@@ -9,12 +9,13 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   modulePathIgnorePatterns: [
-    '<rootDir>/__tests__/fixtures/'
+    '<rootDir>/src/__tests__/fixtures/'
   ],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
     // '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@common/(.*)$': '<rootDir>/src/common/$1',
+    '^@components/(.*)$': '<rootDir>/src/common/components/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@styles/(.*)$': '<rootDir>/src/common/styles/$1',
     '^@helpers/(.*)$': '<rootDir>/src/common/helpers/$1',
