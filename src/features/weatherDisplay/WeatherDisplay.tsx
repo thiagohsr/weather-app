@@ -9,6 +9,7 @@ import { receivedForecast } from "./weatherDisplaySlice";
 import { addCity } from "@features/favouriteCitiesList/favouriteCitiesListSlice";
 import GeolocationCoordinates from "@hooks/geolocation";
 
+import DefaultLoader from "@components/DefaultLoader";
 import CurrentWeather from "@components/CurrentWeather";
 import ForecastList from "@components/ForecastList";
 import {WeatherDisplayHolder, AddToListButton} from './WeatherDisplay.style';
@@ -58,7 +59,7 @@ const WeatherDisplay = () => {
   }, { skip: !latitude && !longitude });
 
   if (isLoadingCity || isLoading || (!forecast?.current)) {
-    return <>Weather is Loading!</>;
+    return <><DefaultLoader /></>;
   }
 
   const alreadyInList = !!cities[`${forecast?.lat}${forecast?.lon}`];

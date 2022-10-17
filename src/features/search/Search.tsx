@@ -104,7 +104,6 @@ const Search = () => {
             return item.name && (
               <ListItem onClick={handleOnSelect(item)} key={item.id} tabIndex={index}>
                 {item.name} | {item.sys.country}
-                {/* { JSON.stringify(item) } */}
               </ListItem>
             )
           }) : null}

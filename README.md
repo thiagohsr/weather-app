@@ -2,7 +2,7 @@
 
 # Weather app code challenge for Tamanna
 
-App to look up for weather based on geolocation and throught the Open Weather Api endpoints. Visit <a href="https://weather-app-thiagoramos.vercel.app/" target="_blank" rel="noopener noreferrer">app on vercel</a>.
+App to look up weather based on geolocation and through the Open Weather API endpoints. Visit <a href="https://weather-app-thiagoramos.vercel.app/" target="_blank" rel="noopener noreferrer">app on vercel</a>.
 
 ## Run the project
 ### Required
