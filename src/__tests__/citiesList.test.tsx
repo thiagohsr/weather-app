@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import CitiesList from "@pages/citiesList";
-import { renderWithProviders } from "@helpers/test-store-utils";
+import { renderWithProviders } from "./utils/test-store-utils";
 import { citiesList } from './fixtures/citiesList.fixture';
 import themingWrapper from "@helpers/themingHelper";
 

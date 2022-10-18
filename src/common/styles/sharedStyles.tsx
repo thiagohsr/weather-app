@@ -81,14 +81,14 @@ const ForecastHolder = styled.div`
 `;
 
 
-const DefaultList = styled.ul`
+const DefaultList = styled('ul')<any>`
   width: 100%;
   margin: 0;
   padding: 0;
   border-radius: 5px;
   overflow: hidden;
   list-style: none;
-  box-shadow: rgb(0 0 0 / 25%) 0px 10px 15px -3px, rgb(0 0 0 / 10%) 0px 4px 6px -4px;
+  box-shadow: ${(props) => props?.shadows ? 'rgb(0 0 0 / 25%) 0px 10px 15px -3px, rgb(0 0 0 / 10%) 0px 4px 6px -4px' : 'none'};
 `;
 
 const DeleteButton = styled.button`

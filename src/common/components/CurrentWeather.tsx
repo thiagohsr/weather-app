@@ -18,6 +18,7 @@ const CurrentWeather = (props: any) => {
   ) {
     return null;
   }
+  // console.log('CurrentWeather::called ',  weather, dataCity, forecast)
 
   return (
     <>

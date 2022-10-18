@@ -36,7 +36,7 @@ export function renderWithProviders(
         citiesList: favouriteCitiesListReducer,
       },
       middleware(getDefaultMiddleware) {
-          return getDefaultMiddleware().concat(weatherApi.middleware)
+          return getDefaultMiddleware({ serializableCheck: false, immutableCheck: false }).concat(weatherApi.middleware)
       },
       preloadedState }),
     ...renderOptions

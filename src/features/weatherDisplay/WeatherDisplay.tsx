@@ -12,7 +12,7 @@ import GeolocationCoordinates from "@hooks/geolocation";
 import DefaultLoader from "@components/DefaultLoader";
 import CurrentWeather from "@components/CurrentWeather";
 import ForecastList from "@components/ForecastList";
-import {WeatherDisplayHolder, AddToListButton} from './WeatherDisplay.style';
+import { WeatherDisplayHolder, AddToListButton } from './WeatherDisplay.style';
 
 const WeatherDisplay = () => {
   const router = useRouter();
@@ -37,27 +37,28 @@ const WeatherDisplay = () => {
       dispatch(receivedForecast(data));
     };
   }, [data, dispatch, weather]);
-
+  
   const handleAddToList = () => {
     /* cases: 
-        When have dataCity (from search result)
-        When do not have dataCity (when first load)
+    When have dataCity (from search result)
+    When do not have dataCity (when first load)
     */
     const addCityPayload = {
       name: weather.name || dataCity?.name,
       country: weather?.sys?.country || dataCity?.country ,
       key: `${forecast?.lat}${forecast?.lon}`,
-      lat: forecast?.lat,
-      lon: forecast?.lon,
+        lat: forecast?.lat,
+        lon: forecast?.lon,
     }
     dispatch(addCity(addCityPayload));
   }
-
+  
+  
   const { isLoading: isLoadingCity, data: dataCity } = useGetCityNameByCoordsQuery({
     latitude,
     longitude
   }, { skip: !latitude && !longitude });
-
+  
   if (isLoadingCity || isLoading || (!forecast?.current)) {
     return <><DefaultLoader /></>;
   }
